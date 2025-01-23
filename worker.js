@@ -2918,7 +2918,7 @@ var src_default = {
   async fetch(request, env) {
     const url = new URL(request.url);
     const host = url.origin;
-    const frontendUrl = 'https://raw.githubusercontent.com/aylz10/psub/main/index.html';
+    const frontendUrl = 'https://github.com/aylz10/psub/blob/main/index1.html';
     const SUB_BUCKET = env.SUB_BUCKET;
     let backend = env.BACKEND.replace(/(https?:\/\/[^/]+).*$/, "$1");
     const subDir = "subscription";
@@ -2928,21 +2928,12 @@ var src_default = {
       if (response.status !== 200) {
         return new Response('Failed to fetch frontend', { status: response.status });
       }
-
       const originalHtml = await response.text();
-      console.log("Original HTML:", originalHtml); // 调试打印原始 HTML 内容
-
-      // 替换 HTML 中的 URL
-      const modifiedHtml = originalHtml.replace(/https?:\/\/bulianglin2023\.dev[^\s"']*/g, host);
-      console.log("Modified HTML:", modifiedHtml); // 调试打印修改后的 HTML 内容
-
+      const modifiedHtml = originalHtml.replace(/https:\/\/bulianglin2023\.dev/, host);
       return new Response(modifiedHtml, {
         status: 200,
         headers: {
           'Content-Type': 'text/html',
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0',
         },
       });
     } else if (pathSegments[0] === subDir) {
