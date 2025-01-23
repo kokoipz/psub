@@ -2928,7 +2928,6 @@ var src_default = {
       if (response.status !== 200) {
         return new Response('Failed to fetch frontend', { status: response.status });
       }
-      const originalHtml = await response.text();
       return new Response(modifiedHtml, {
         status: 200,
         headers: {
