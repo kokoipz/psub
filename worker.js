@@ -2918,7 +2918,7 @@ var src_default = {
   async fetch(request, env) {
     const url = new URL(request.url);
     const host = url.origin;
-    const frontendUrl = 'https://raw.githubusercontent.com/aylz10/psub/main/index.html';
+    const frontendUrl = 'https://raw.githubusercontent.com/aylz10/psub/main/index1.html';
     const SUB_BUCKET = env.SUB_BUCKET;
     let backend = env.BACKEND.replace(/(https?:\/\/[^/]+).*$/, "$1");
     const subDir = "subscription";
@@ -3006,7 +3006,7 @@ var src_default = {
         } else {
           parsedObj = parseData(url2);
         }
-        if (/^(ssr?|vmess1?|trojan|vless|hysteria|hysteria2|tg):\/\//.test(url2)) {
+        if (/^(ssr?|vmess1?|trojan|vless|hysteria|hysteria2):\/\//.test(url2)) {
           const newLink = replaceInUri(url2, replacements, false);
           if (newLink)
             replacedURIs.push(newLink);
@@ -3082,15 +3082,9 @@ function replaceInUri(link, replacements, isRecovery) {
       return replaceHysteria(link, replacements);
     case link.startsWith("hysteria2://"):
       return replaceHysteria2(link, replacements, isRecovery);
-    case link.startsWith("tg://"):
-      return replacetg(link, replacements, isRecovery);
     default:
       return;
   }
-}
-
-function replacetg(link, replacements, isRecovery) {
-  return link;
 }
 
 function replaceSSR(link, replacements, isRecovery) {
@@ -3219,7 +3213,7 @@ function replaceSS(link, replacements, isRecovery) {
 function replaceTrojan(link, replacements, isRecovery) {
   const randomUUID = generateRandomUUID();
   const randomDomain = generateRandomStr(10) + ".com";
-  const regexMatch = link.match(/(vless|trojan):\/\/(.*?)@(.*?):/);
+  const regexMatch = link.match(/(vless|trojan):\/\/(.*?)@(.*):/);
   if (!regexMatch) {
     return;
   }
