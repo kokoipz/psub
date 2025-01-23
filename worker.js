@@ -2918,7 +2918,7 @@ var src_default = {
   async fetch(request, env) {
     const url = new URL(request.url);
     const host = url.origin;
-    const frontendUrl = 'https://github.com/aylz10/psub/blob/main/index1.html';
+    const frontendUrl = 'https://raw.githubusercontent.com/aylz10/psub/main/index1.html';
     const SUB_BUCKET = env.SUB_BUCKET;
     let backend = env.BACKEND.replace(/(https?:\/\/[^/]+).*$/, "$1");
     const subDir = "subscription";
